@@ -36,11 +36,12 @@ export default class Login extends Component {
       )
       .then((response) => {
         if (response.data.status === "created") {
-          console.log("Access granted");
+          this.props.handleSuccessfulAuth();
         } else {
           this.setState({
             errorText: "Access denied hoe!",
           });
+          this.props.handleUnsuccessfulAuth();
         }
       })
       .catch((error) => {
@@ -82,3 +83,5 @@ export default class Login extends Component {
     );
   }
 }
+
+// {true ? "do something" : "do something else"}
