@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { withRouter } from "react-router"; // Higher Order Component (HOC)
 import { NavLink } from "react-router-dom";
 
@@ -64,7 +65,9 @@ const NavigationComponent = (props) => {
       <div className="right-side">
         Sierra M. Williams
         {props.loggedInStatus === "LOGGED_IN" ? (
-          <a onClick={handleSignOut}>Peace Out</a>
+          <a onClick={handleSignOut}>
+            <FontAwesomeIcon icon="sign-out-alt" />
+          </a>
         ) : null}
       </div>
     </div>
