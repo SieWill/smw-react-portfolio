@@ -44,8 +44,8 @@ export default class PortfolioForm extends Component {
         category,
         position,
         url,
-        thumb_image,
-        banner_image,
+        thumb_image_url,
+        banner_image_url,
         logo_url,
       } = this.props.portfolioToEdit;
 
@@ -61,6 +61,9 @@ export default class PortfolioForm extends Component {
         editMode: true,
         apiUrl: `https://sierrawilliams.devcamp.space/portfolio/portfolio_items/${id}`,
         apiAction: "patch",
+        thumb_image: thumb_image_url || "",
+        banner_image: banner_image_url || "",
+        logo: logo_url || "",
       });
     }
   }
@@ -217,16 +220,19 @@ export default class PortfolioForm extends Component {
             onChange={this.handleChange}
           />
         </div>
-
         <div className="image-uploaders three-column">
-          <DropzoneComponent
-            ref={this.thumbRef}
-            config={this.componentConfig()}
-            djsConfig={this.djsConfig()}
-            eventHandlers={this.handleThumbDrop()}
-          >
-            <div className="dz-message">Thumbnail</div>
-          </DropzoneComponent>
+          {this.state.thumb_image && this.state.editMode ? (
+            <img src={this.state.thumb_image} />
+          ) : (
+            <DropzoneComponent
+              ref={this.thumbRef}
+              config={this.componentConfig()}
+              djsConfig={this.djsConfig()}
+              eventHandlers={this.handleThumbDrop()}
+            >
+              <div className="dz-message">Thumbnail</div>
+            </DropzoneComponent>
+          )}
 
           <DropzoneComponent
             ref={this.bannerRef}

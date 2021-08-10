@@ -33,16 +33,6 @@ export default class PortfolioManager extends Component {
     });
   }
 
-  handleEditFormSubmission() {
-    this.getPortfolioItems();
-  }
-
-  handleNewFormSubmission(portfolioItem) {
-    this.setState({
-      portfolioItems: [portfolioItem].concat(this.state.portfolioItems),
-    });
-  }
-
   handleDeleteClick(portfolioItem) {
     axios
       .delete(
@@ -61,6 +51,16 @@ export default class PortfolioManager extends Component {
       .catch((error) => {
         console.log("handleDeleteClick error", error);
       });
+  }
+
+  handleEditFormSubmission() {
+    this.getPortfolioItems();
+  }
+
+  handleNewFormSubmission(portfolioItem) {
+    this.setState({
+      portfolioItems: [portfolioItem].concat(this.state.portfolioItems),
+    });
   }
 
   handleFormSubmissionError(error) {
