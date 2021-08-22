@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Axios from "axios";
 import axios from "axios";
+import BlogItem from "../blog/blog-item";
 
 class Blog extends Component {
   constructor() {
@@ -29,19 +29,15 @@ class Blog extends Component {
       });
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.getBlogItems();
   }
 
   render() {
-    return (
-      <div>
-        <h2> Blog</h2>
-        <div>
-          <Link to="/about-me">Read more about myself</Link>
-        </div>
-      </div>
-    );
+    const blogRecords = this.state.blogItems.map((blogItem) => {
+      return <BlogItem key={blogItem.id} blogItem={blogItem} />;
+    });
+    return <div>{blogRecords}</div>;
   }
 }
 
