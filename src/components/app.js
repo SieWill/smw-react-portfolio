@@ -9,6 +9,7 @@ import {
   faEdit,
   faMinusCircle,
   faSpinner,
+  faPlusCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 import NavigationContainer from "./navigation/navigation-container";
@@ -22,7 +23,14 @@ import PortfolioManager from "./pages/portfolio-manager";
 import PortfolioDetail from "./portfolio/portfolio-detail";
 import NoMatch from "./pages/no-match";
 
-library.add(faTrash, faSignOutAlt, faEdit, faMinusCircle, faSpinner);
+library.add(
+  faTrash,
+  faSignOutAlt,
+  faEdit,
+  faMinusCircle,
+  faSpinner,
+  faPlusCircle
+);
 
 export default class App extends Component {
   constructor(props) {
@@ -127,7 +135,12 @@ export default class App extends Component {
               {this.state.loggedInStatus === "LOGGED_IN"
                 ? this.authorizedPages()
                 : null}
-              <Route path="/blog" component={Blog} />
+              <Route
+                path="/blog"
+                render={(props) => (
+                  <Blog {...props} loggedInStatus={this.state.loggedInStatus} />
+                )}
+              />
               <Route path="/b/:slug" component={BlogDetail} />
               <Route
                 exact
