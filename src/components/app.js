@@ -1,16 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTrash,
-  faSignOutAlt,
-  faEdit,
-  faMinusCircle,
-  faSpinner,
-  faPlusCircle,
-} from "@fortawesome/free-solid-svg-icons";
+
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import NavigationContainer from "./navigation/navigation-container";
 import Home from "./pages/home";
@@ -22,19 +14,13 @@ import BlogDetail from "./pages/blog-detail";
 import PortfolioManager from "./pages/portfolio-manager";
 import PortfolioDetail from "./portfolio/portfolio-detail";
 import NoMatch from "./pages/no-match";
-
-library.add(
-  faTrash,
-  faSignOutAlt,
-  faEdit,
-  faMinusCircle,
-  faSpinner,
-  faPlusCircle
-);
+import Icons from "../helpers/icons";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
+
+    Icons();
 
     this.state = {
       loggedInStatus: "NOT_LOGGED_IN",
