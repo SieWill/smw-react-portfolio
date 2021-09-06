@@ -78,7 +78,7 @@ export default class App extends Component {
         console.log("Error", error);
       });
   }
-  UNSAFE_componentDidMount() {
+  componentDidMount() {
     this.checkLoginStatus();
   }
 
