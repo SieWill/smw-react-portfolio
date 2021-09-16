@@ -251,6 +251,7 @@ export default class PortfolioForm extends Component {
           {this.state.banner_image && this.state.editMode ? (
             <div className="portfolio-manager-image-wrapper">
               <img src={this.state.banner_image} />
+
               <div className="image-removal-link">
                 <a onClick={() => this.deleteImage("banner_image")}>
                   <FontAwesomeIcon icon="minus-circle" />

@@ -1,4 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
+
 import axios from "axios";
 
 import RichTextEditor from "../forms/rich-text-editor";
@@ -147,15 +149,26 @@ export default class BlogForm extends Component {
             }
           />
         </div>
+
         <div className="image-uploaders">
-          <DropzoneComponent
-            ref={this.featuredImageRef}
-            config={this.componentConfig()}
-            djsConfig={this.djsConfig()}
-            eventHandlers={this.handleFeaturedImageDrop()}
-          >
-            <div className="dz-message">Featured Image</div>
-          </DropzoneComponent>
+          {this.props.editMode && this.props.blog.featured_image_url ? (
+            <div className="portfolio-manager-image-wrapper">
+              <img src={this.props.blog.featured_image_url} />
+
+              <div className="image-removal-link">
+                <FontAwesomeIcon icon="minus-circle" />
+              </div>
+            </div>
+          ) : (
+            <DropzoneComponent
+              ref={this.featuredImageRef}
+              config={this.componentConfig()}
+              djsConfig={this.djsConfig()}
+              eventHandlers={this.handleFeaturedImageDrop()}
+            >
+              <div className="dz-message">Featured Image</div>
+            </DropzoneComponent>
+          )}
         </div>
         <button className="btn">Save</button>
       </form>
