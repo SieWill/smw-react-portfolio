@@ -64,7 +64,7 @@ export default class PortfolioManager extends Component {
   }
 
   handleFormSubmissionError(error) {
-    console.log("handleFormSubmissionError", error);
+    console.log("handleFormSubmissionError error", error);
   }
 
   getPortfolioItems() {
@@ -101,6 +101,7 @@ export default class PortfolioManager extends Component {
             portfolioToEdit={this.state.portfolioToEdit}
           />
         </div>
+
         <div className="right-column">
           <PortfolioSidebarList
             handleDeleteClick={this.handleDeleteClick}

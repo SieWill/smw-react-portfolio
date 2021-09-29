@@ -174,8 +174,8 @@ export default class PortfolioForm extends Component {
           banner_image: "",
           logo: "",
           editMode: false,
-          apiUrl: `https://sierrawilliams.devcamp.space/portfolio/portfolio_items/${id}`,
-          apiAction: "patch",
+          apiUrl: `https://sierrawilliams.devcamp.space/portfolio/portfolio_items`,
+          apiAction: "post",
         });
 
         [this.thumbRef, this.bannerRef, this.logoRef].forEach((ref) => {
